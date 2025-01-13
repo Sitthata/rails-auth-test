@@ -1,14 +1,6 @@
 class Comment < ApplicationRecord
-  def index
-    
-  end
+  belongs_to :user, optional: true
+  belogns_to :product
 
-  private
-    def set_comment
-      @product = Product.find(params[:id])
-    end
-
-    def comment_params
-      params.expect(comment: [ :content ])
-    end
+  validate :content, presence: true, length: { minimum: 10 }
 end
