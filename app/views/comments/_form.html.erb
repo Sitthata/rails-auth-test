@@ -1,0 +1,8 @@
+<% form_with do |form| %>
+    <%= current_user?.email %>
+    <h2></h2>
+    <%= form.label :comment %>
+    <%= form.text_area :comment, placeholder: "Your comments here...", require: true %>
+    
+    <%= form.submit %>
+<% end %>
