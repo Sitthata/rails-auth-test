@@ -1,6 +1,6 @@
 <%= form_with(model: [@product, Comment.new] ) do |form| %>
   <h2>Add Comments</h2>
-  <%= form.label :comment %>
-  <%= form.text_area :comment, placeholder: "Your comments here...", require: true %>
+  <%= form.label :content %>
+  <%= form.text_area :content, placeholder: "Your comments here...", require: true %>
   <%= form.submit %>
 <% end %>

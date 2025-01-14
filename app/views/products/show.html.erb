@@ -1,4 +1,5 @@
 <section class="product">
+  <%= debug @product %>
   <% cache @product do %>
     <section class="product-info">
       <h1><%= @product.name %></h1>
@@ -7,5 +8,20 @@
   <% end %>
   <div>
     <%= render "comments/form", product: @product %>
+    <div class="comments-section">
+      <h2>Comments (<%= @comments.count %>)</h2>
+      <% if @comments.any? %>
+        <ul class="comments-list">
+          <% @comments.each do |comment| %>
+            <li class="comment">
+              <p><strong><%= comment.user.email %>:</strong> <%= comment.content %></p>
+              <small><%= time_ago_in_words(comment.created_at) %> ago</small>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No comments yet. Be the first to comment!</p>
+      <% end %>
+    </div>
   </div>
 </section>
