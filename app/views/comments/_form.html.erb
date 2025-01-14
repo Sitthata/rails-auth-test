@@ -1,6 +1,10 @@
-<%= form_with(model: [@product, Comment.new] ) do |form| %>
-  <h2>Add Comments</h2>
-  <%= form.label :content %>
-  <%= form.text_area :content, placeholder: "Your comments here...", require: true %>
-  <%= form.submit %>
+<% if user_signed_in? %>
+  <%= form_with(model: [@product, Comment.new] ) do |form| %>
+    <h2>Add Comments</h2>
+    <%= form.label :content %>
+    <%= form.text_area :content, placeholder: "Your comments here...", require: true %>
+    <%= form.submit %>
+  <%end%>
+<% else %>
+  <p>You need to <%= link_to "sign in", new_user_session_path %> to leave a comment.</p>
 <% end %>

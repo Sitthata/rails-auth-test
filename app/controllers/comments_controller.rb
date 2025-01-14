@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_product, only: %i[create]
+  before_action :authenticate_user!
+
   def index
   end
 
